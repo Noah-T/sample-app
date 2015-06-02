@@ -7,4 +7,11 @@ module ApplicationHelper
 			page_title + ' | ' + base_title
 		end
 	end
+
+	def funky_shuffler(string)
+		#split into array of characters
+		#shuffle
+		#join back together 
+		string.split("").shuffle.join
+	end
 end
