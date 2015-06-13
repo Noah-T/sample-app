@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
+      #log in user automatically on creation
+      log_in @user
   		#save was a success
   		#show user
   		flash[:success] = "Welcome to the Sample App!"
@@ -19,6 +21,10 @@ class UsersController < ApplicationController
   	end
   end
 
+  def update
+      user = User.find(params[:id])
+      user.
+  end
   private 
   def user_params
       params.require(:user).permit(:name, :email, :password,
