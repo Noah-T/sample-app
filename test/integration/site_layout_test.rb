@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
   test "layout links" do
-  	#go to home page
+    #go to home page
     get root_path
     #the static_pages/home template should be displayed
     assert_template 'static_pages/home'
