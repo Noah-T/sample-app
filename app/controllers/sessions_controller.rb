@@ -3,21 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	#first find user with email
-  	user = User.find_by(email: params[:session][:email].downcase)
-    #if user is found, check password with bcrypt
-    if user && user.authenticate(params[:session][:password])
-      # Log the user in and redirect to the user's show page.
-      log_in user
-      #keep logged in with cookie if they check "remember me"
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      #show their profile
-      redirect_to user
+    ?user = User.find_by(email: params[:session][:email].downcase)
+    if ?user && ?user.authenticate(params[:session][:password])
+      log_in ?user
+      params[:session][:remember_me] == '1' ? remember(?user) : forget(?user)
+      redirect_to ?user
     else
-    	#flash.now will show a message and disappear on the next page. flash will only disappear after it persits for one redirect (render doesn't count as a redirect)
-    	flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
-		render 'new'
-	end
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
+    end
   end
 
 
