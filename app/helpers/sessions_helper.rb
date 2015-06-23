@@ -30,6 +30,14 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def signed_in?
+    !current_user.nil?
+  end
+
+  def current_user=(user)
+    @current_user = user
+  end
+
   # Forgets a persistent session.
   def forget(user)
     user.forget
