@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
     has_secure_password
-      validates :password, presence: true, length: { minimum: 6 }
+    #allow user to not include password when updating model
+    #safe for new users because has_secure_password will still check to make sure they create one
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     # Returns the hash digest of the given string.
   #methods in this block are class methods
   class << self
