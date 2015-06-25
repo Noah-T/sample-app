@@ -51,4 +51,9 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  #remember original origin of request
+  def store_location
+    session[:return_to] = request.url if request.get?
+  end
 end
